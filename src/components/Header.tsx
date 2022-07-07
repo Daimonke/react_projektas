@@ -1,13 +1,11 @@
 import { Button } from '@mui/material';
-import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { context } from '../App';
 
 type Props = {}
 
 const Header = (props: Props) => {
 
-    const { token } = useContext(context);
+    const token = localStorage.getItem('token');
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 10 }}>

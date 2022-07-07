@@ -1,7 +1,6 @@
 import { CircularProgress } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { context } from '../App';
 
 type Props = {}
 
@@ -10,8 +9,7 @@ const Home = (props: Props) => {
 
     const [loading, setLoading] = useState(true);
 
-    // use context
-    const { token } = useContext(context);
+    const token = localStorage.getItem('token')
 
 
     useEffect(() => {
