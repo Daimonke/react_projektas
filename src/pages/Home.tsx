@@ -40,26 +40,28 @@ const Home = () => {
                 <div style={{ display: 'flex', width: '100%', justifyContent: 'center', marginTop: 100 }}>
                     <CircularProgress />
                 </div> :
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat( auto-fill, minmax(300px, 1fr) )',
-                    gap: 15,
-                }}>
-                    {skills.map(skill =>
-                        <div key={skill.id} style={{
-                            backgroundColor: 'black',
-                            color: 'white',
-                            padding: 30,
-                            borderRadius: 10,
-                            boxShadow: '0px 0px 10px rgba(0,0,0,0.5)',
-                            border: '1px solid white',
-                        }}>
-                            <Typography sx={{ wordBreak: 'break-word' }} variant='h3'>{skill.title}</Typography>
-                            <Divider sx={{ backgroundColor: 'white', mt: 1, mb: 2 }} />
-                            <Typography variant='body1'>{skill.description}</Typography>
-                        </div>
-                    )}
-                </div>}
+                skills.length === 0 ? <Typography variant='h2' textAlign='center'>No skills yet...</Typography> :
+
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat( auto-fill, minmax(300px, 1fr) )',
+                        gap: 15,
+                    }}>
+                        {skills.map(skill =>
+                            <div key={skill.id} style={{
+                                backgroundColor: 'black',
+                                color: 'white',
+                                padding: 30,
+                                borderRadius: 10,
+                                boxShadow: '0px 0px 10px rgba(0,0,0,0.5)',
+                                border: '1px solid white',
+                            }}>
+                                <Typography sx={{ wordBreak: 'break-word' }} variant='h3'>{skill.title}</Typography>
+                                <Divider sx={{ backgroundColor: 'white', mt: 1, mb: 2 }} />
+                                <Typography variant='body1'>{skill.description}</Typography>
+                            </div>
+                        )}
+                    </div>}
 
         </div>
     )
