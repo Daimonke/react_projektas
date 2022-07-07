@@ -1,11 +1,11 @@
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-type Props = {}
+type Props = {
+    loggedIn: boolean
+}
 
-const Header = (props: Props) => {
-
-    const token = localStorage.getItem('token');
+const Header = ({ loggedIn }: Props) => {
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 10 }}>
@@ -13,7 +13,7 @@ const Header = (props: Props) => {
                 <img alt='logo' src='https://cryptologos.cc/logos/stellar-xlm-logo.png' width={100} />
             </Link>
             <div style={{ display: 'flex', gap: 10 }}>
-                {token ?
+                {loggedIn ?
                     <>
                         <Link to='/'>
                             <Button variant='contained' color='primary'>Home</Button>

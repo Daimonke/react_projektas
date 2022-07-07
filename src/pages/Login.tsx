@@ -1,15 +1,41 @@
-import { Button, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import { Button, CircularProgress, TextField } from '@mui/material'
+import React, { FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-type Props = {}
+type Props = {
+    setLoggedIn: (loggedIn: boolean) => void
+}
 
-const Login = (props: Props) => {
-
+const Login = ({ setLoggedIn }: Props) => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const handleLogin = () => {
-
+    const handleLogin = (e: FormEvent) => {
+        e.preventDefault()
+        setLoading(true)
+        fetch('/v1/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.err) return alert(res.err)
+                if (res.token) {
+                    localStorage.setItem('token', res.token)
+                    setLoggedIn(true)
+                    navigate('/')
+                }
+            }
+            )
+            .finally(() => setLoading(false))
     }
 
     return (
@@ -22,9 +48,10 @@ const Login = (props: Props) => {
                 gap: 10
             }}
                 onSubmit={handleLogin}>
-                <TextField label='Email' type='email' onChange={(e) => setEmail(e.target.value)} />
-                <TextField label='Password' type='password' onChange={(e) => setPassword(e.target.value)} />
+                <TextField autoComplete='email' label='Email' type='email' onChange={(e) => setEmail(e.target.value)} />
+                <TextField autoComplete='current-password' label='Password' type='password' onChange={(e) => setPassword(e.target.value)} />
                 <Button type='submit' variant='contained' color='primary'>Login</Button>
+                {loading ? <CircularProgress sx={{ margin: '0 auto', mt: 2 }} /> : null}
             </form>
         </div >
     )
