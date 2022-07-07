@@ -31,10 +31,10 @@ const Add = (props: Props) => {
             .then(res => res.json())
             .then(res => {
                 if (res.err) return alert('Invalid title or description')
-                alert('Skill added')
                 resetInputs();
             }
             )
+            .then(() => alert('Skill added'))
             .finally(() => setLoading(false))
     }
 
