@@ -1,11 +1,18 @@
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type Props = {
     loggedIn: boolean
+    setLoggedIn: (loggedIn: boolean) => void
 }
 
-const Header = ({ loggedIn }: Props) => {
+const Header = ({ loggedIn, setLoggedIn }: Props) => {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        setLoggedIn(false);
+        navigate('/login');
+    }
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 10 }}>
@@ -18,9 +25,10 @@ const Header = ({ loggedIn }: Props) => {
                         <Link to='/'>
                             <Button variant='contained' color='primary'>Home</Button>
                         </Link>
-                        <Link to='/login'>
+                        <Link to='/add'>
                             <Button variant='contained' color='primary'>Add</Button>
                         </Link>
+                        <Button variant='contained' color='error' onClick={handleLogout}>Logout</Button>
                     </> :
                     <>
                         <Link to='/login'>

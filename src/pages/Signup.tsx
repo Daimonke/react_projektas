@@ -1,4 +1,4 @@
-import { Button, CircularProgress, TextField } from '@mui/material'
+import { Button, CircularProgress, Divider, TextField, Typography } from '@mui/material'
 import React, { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -33,6 +33,8 @@ const Signup = (props: Props) => {
     }
     return (
         <div style={{ width: '100%' }} >
+            <Typography variant='h2' textAlign='center'>Sign-up</Typography>
+            <Divider sx={{ m: 2 }} />
             <form style={{
                 margin: '0 auto',
                 width: 'fit-content',
