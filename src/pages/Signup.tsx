@@ -2,9 +2,8 @@ import { Button, CircularProgress, Divider, TextField, Typography } from '@mui/m
 import React, { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-type Props = {}
 
-const Signup = (props: Props) => {
+const Signup = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -26,7 +25,7 @@ const Signup = (props: Props) => {
             .then(res => res.json())
             .then(res => {
                 if (res.changes === 1) return navigate('/login')
-                alert('Invalid email or password')
+                alert(res.err)
             }
             )
             .finally(() => setLoading(false))
