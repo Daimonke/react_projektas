@@ -15,11 +15,11 @@ const Header = ({ loggedIn, setLoggedIn }: Props) => {
     }
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 10, gap: 10 }}>
             <Link to='/'>
                 <img alt='logo' src='https://cryptologos.cc/logos/stellar-xlm-logo.png' width={100} />
             </Link>
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 {loggedIn ?
                     <>
                         <Link to='/'>
