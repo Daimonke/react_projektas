@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "email": "test@gmail.com",
+      "password": "$2b$10$VZWhb6hGDLzwJq5mQmUVQOOhXdK.LXR98IvuCBusWFyVzRcDripDq",
+      "id": 1
+    },
+    {
+      "email": "daimo@gmail.com",
+      "password": "$2b$10$CyqQd.RGM07xurntwfva9.t/.SYdctCzw/.dpyUOvl3WmV77jUv42",
+      "id": 2
+    },
+    {
+      "email": "testasdasd@gmail.com",
+      "password": "$2b$10$IwB.qH2g3K8LoISb0j.23eRitu1tFt.ovAXoDoUq5GDSuLEQ8UKja",
+      "id": 3
+    }
+  ],
+  "skills": [
+    {
+      "title": "React",
+      "description": "Declarative. React makes it painless to create interactive UIs. Component-Based.",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "title": "Html",
+      "description": "The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "title": "Css",
+      "description": "CSS is the language we use to style an HTML document. CSS describes how HTML elements should be displayed.",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "title": "Javascript",
+      "description": "Javascript is used by programmers across the world to create dynamic and interactive web content like applications and browsers.",
+      "userId": 1,
+      "id": 4
+    }
+  ]
+}
