@@ -1,12 +1,8 @@
 import { Button, CircularProgress, Divider, TextField, Typography } from '@mui/material'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-type Props = {
-    setLoggedIn: (loggedIn: boolean) => void
-}
-
-const Login = ({ setLoggedIn }: Props) => {
+const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -30,13 +26,17 @@ const Login = ({ setLoggedIn }: Props) => {
                 if (res.err) return alert(res.err)
                 if (res.token) {
                     localStorage.setItem('token', res.token)
-                    setLoggedIn(true)
                     navigate('/')
                 }
             }
             )
             .finally(() => setLoading(false))
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) navigate('/')
+    }, [navigate]);
 
     return (
         <div style={{ width: '100%' }} >
@@ -50,8 +50,8 @@ const Login = ({ setLoggedIn }: Props) => {
                 gap: 10
             }}
                 onSubmit={handleLogin}>
-                <TextField autoComplete='email' label='Email' type='email' onChange={(e) => setEmail(e.target.value)} />
-                <TextField autoComplete='current-password' label='Password' type='password' onChange={(e) => setPassword(e.target.value)} />
+                <TextField autoComplete='email' label='Email' type='email' name='email' onChange={(e) => setEmail(e.target.value)} />
+                <TextField autoComplete='current-password' label='Password' type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
                 <Button type='submit' variant='contained' color='primary'>Login</Button>
                 {loading ? <CircularProgress sx={{ margin: '0 auto', mt: 2 }} /> : null}
             </form>

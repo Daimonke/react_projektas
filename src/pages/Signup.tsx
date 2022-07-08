@@ -1,7 +1,6 @@
 import { Button, CircularProgress, Divider, TextField, Typography } from '@mui/material'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -30,6 +29,12 @@ const Signup = () => {
             )
             .finally(() => setLoading(false))
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) navigate('/')
+    }, [navigate]);
+
     return (
         <div style={{ width: '100%' }} >
             <Typography variant='h2' textAlign='center'>Sign-up</Typography>

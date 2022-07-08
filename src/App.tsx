@@ -10,19 +10,17 @@ import Signup from './pages/Signup';
 function App() {
   const navigate = useNavigate();
   const [loggedIn, setLoggedIn] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) {
-      setLoggedIn(true);
-      navigate('/')
-    }
-  }
-    , []);
+    if (token) setLoggedIn(true);
+  }, [navigate]);
+
   return (
     <Container>
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
-        <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/add" element={<Add />} />
         <Route path="/" element={<Home />} />
