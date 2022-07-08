@@ -13,7 +13,8 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token) setLoggedIn(true);
+    if (token) return setLoggedIn(true);
+    setLoggedIn(false);
   }, [navigate]);
 
   return (

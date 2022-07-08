@@ -9,7 +9,19 @@ const OnlyAuthed = ({ children }: Props) => {
     const navigate = useNavigate();
     useEffect(() => {
         const token = localStorage.getItem('token');
-        if (!token) navigate('/login');
+        fetch('/v1/verify', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.err) {
+                    localStorage.removeItem('token');
+                    return navigate('/login');
+                }
+            }
+            )
     }, [navigate]);
 
     return (
