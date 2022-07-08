@@ -5,7 +5,6 @@ import axios from 'axios';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    console.log(req.body)
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -21,11 +20,16 @@ router.post('/', async (req, res) => {
         password: hashedPwd
     };
 
+    const allUsers = await axios.get('http://localhost:3100/users');
+    if (allUsers.data.find(user => user.email === email)) {
+        return res.status(400).json({
+            err: 'Email already exists'
+        })
+    }
+
     await axios.post('http://localhost:3100/users', user);
 
-    res.send({ changes: 1 });
-
-
+    res.json({ changes: 1 });
 });
 
 export default router;
