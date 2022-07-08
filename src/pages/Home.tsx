@@ -21,7 +21,6 @@ const Home = () => {
     useEffect(() => {
         const token = localStorage.getItem('token')
 
-        if (!token) return navigate('/login');
         fetch('/v1/content/skills', {
             headers: {
                 'Authorization': `Bearer ${token}`
