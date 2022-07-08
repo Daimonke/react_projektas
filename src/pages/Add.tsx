@@ -32,9 +32,9 @@ const Add = (props: Props) => {
             .then(res => {
                 if (res.err) return alert('Invalid title or description')
                 resetInputs();
+                alert(res.msg)
             }
             )
-            .then(() => alert('Skill added'))
             .finally(() => setLoading(false))
     }
 
@@ -50,8 +50,8 @@ const Add = (props: Props) => {
                 gap: 10
             }}
                 onSubmit={handleAdd}>
-                <TextField label='Title' type='text' onChange={(e) => setTitle(e.target.value)} />
-                <TextField label='Description' type='text' onChange={(e) => setDescription(e.target.value)} />
+                <TextField value={title} label='Title' type='text' onChange={(e) => setTitle(e.target.value)} />
+                <TextField value={description} label='Description' type='text' onChange={(e) => setDescription(e.target.value)} />
                 <Button type='submit' variant='contained' color='primary'>Add</Button>
                 {loading ? <CircularProgress sx={{ margin: '0 auto', mt: 2 }} /> : null}
             </form>

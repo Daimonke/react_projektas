@@ -1,15 +1,15 @@
 import jwt from 'jsonwebtoken';
 
-export default async function isAuthed(req) {
-    if (req.cookies.token) {
-        const token = req.cookies.token;
-        const bool = jwt.verify(token, process.env.JWT_SECRET, (err, result) => {
-            if (err) return false
+export default function isAuthed(req, res, next) {
+    if (req.headers['authorization']) {
+        const token = req.headers.authorization.split(' ')[1];
+        jwt.verify(token, 'secret', (err, result) => {
+            if (err) return res.status(400).send({ err: 'Invalid token' })
             req.token = result
-            return true
+            next()
         })
-        return bool
     } else {
-        return false
+        console.log('err verify')
+        res.status(404).send({ err: 'Token not found' })
     }
 }
