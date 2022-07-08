@@ -52,7 +52,7 @@ const Add = (props: Props) => {
                 }}
                     onSubmit={handleAdd}>
                     <TextField value={title} label='Title' type='text' onChange={(e) => setTitle(e.target.value)} />
-                    <TextField value={description} label='Description' type='text' onChange={(e) => setDescription(e.target.value)} />
+                    <TextField multiline value={description} label='Description' type='text' onChange={(e) => setDescription(e.target.value)} />
                     <Button type='submit' variant='contained' color='primary'>Add</Button>
                     {loading ? <CircularProgress sx={{ margin: '0 auto', mt: 2 }} /> : null}
                 </form>
