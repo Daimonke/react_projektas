@@ -5,7 +5,10 @@ const router = express.Router();
 
 router.get("/", isAuthed, async (req, res) => {
     const { data } = await axios.get("http://localhost:3100/skills")
-    res.json(data)
+
+    const filteredData = data.filter(skill => skill.userId === req.token.id)
+
+    res.json(filteredData)
 });
 
 router.post("/", isAuthed, async (req, res) => {
@@ -19,7 +22,8 @@ router.post("/", isAuthed, async (req, res) => {
 
     await axios.post("http://localhost:3100/skills", {
         title,
-        description
+        description,
+        userId: req.token.id
     })
 
     res.json({ msg: "Skill added" })

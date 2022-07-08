@@ -4,38 +4,31 @@
       "email": "test@gmail.com",
       "password": "$2b$10$VZWhb6hGDLzwJq5mQmUVQOOhXdK.LXR98IvuCBusWFyVzRcDripDq",
       "id": 1
+    },
+    {
+      "email": "daimo@gmail.com",
+      "password": "$2b$10$CyqQd.RGM07xurntwfva9.t/.SYdctCzw/.dpyUOvl3WmV77jUv42",
+      "id": 2
     }
   ],
   "skills": [
     {
-      "title": "React",
-      "description": "random random",
+      "title": "asd",
+      "description": "asd",
+      "userId": 1,
       "id": 1
     },
     {
-      "title": "asd",
-      "description": "asd",
+      "title": "yee",
+      "description": "yee",
+      "userId": 1,
       "id": 2
     },
     {
-      "title": "fafa",
-      "description": "fafa",
+      "title": "asdasd",
+      "description": "asdasd",
+      "userId": 2,
       "id": 3
-    },
-    {
-      "title": "asd",
-      "description": "asd",
-      "id": 4
-    },
-    {
-      "title": "asd",
-      "description": "asd",
-      "id": 5
-    },
-    {
-      "title": "fff",
-      "description": "fafa",
-      "id": 6
     }
   ]
 }
